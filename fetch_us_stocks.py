@@ -15,7 +15,7 @@ def fetch(symbol, period, start, end, retries=3):
                 options.update(period=period or "2y", end=end)
             df = yf.download(symbol, **options)
             if df is None or df.empty:
-                raise ValueError("無數據：請檢查日期、網絡或供應商限流")
+                raise ValueError("無數據：請檢查代號、日期、網絡或供應商限流")
             if isinstance(df.columns, pd.MultiIndex):
                 df.columns = df.columns.get_level_values(0)
             required = ["Open", "High", "Low", "Close", "Adj Close", "Volume"]
