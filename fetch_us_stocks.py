@@ -12,7 +12,7 @@ def fetch(symbol, period, start, end, retries=3):
             if start:
                 options.update(start=start, end=end)
             else:
-                options.update(period=period or "2y", end=end)
+                options.update(period=period or "3y", end=end)
             df = yf.download(symbol, **options)
             if df is None or df.empty:
                 raise ValueError("無數據：請檢查代號、日期、網絡或供應商限流")
